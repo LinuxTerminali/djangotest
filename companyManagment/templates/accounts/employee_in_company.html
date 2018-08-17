@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block head %}
+<title>Invite</title>
+{% endblock %} {% block body %}
+<div class="container">
+    {% if all|length < 1 %}
+    <p class="text-center">Zero employee in your company
+        <a href="{% url 'invite_employee' %}">invite someone Now</a>
+    </p>
+    {% endif %} {% for userlist in all %}
+    <div class="card-body">
+        <h4 class="card-title">{{ userlist }}</h4>
+        <p class="card-text">Work in your comapny</p>
+        <a href="{% url 'myemployee' %}?remove={{userlist.id}}" class="card-link">Remove</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

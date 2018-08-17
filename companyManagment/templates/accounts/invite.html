@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block head %}
+<title>Invite</title>
+{% endblock %} {% block body %}
+<div class="container">
+    {% for userlist in all %} {% if userlist.userprofile.admin == False and userlist.userprofile.company == None %}
+    <div class="card-body">
+        <h4 class="card-title">{{ userlist }}</h4>
+        <p class="card-text">Is a new employee, invite him to join your comapny</p>
+        <a href="{% url 'invite_employee_with_pk' userlist.id %}" class="card-link">Invite</a>
+    </div>
+    {%endif%} {% endfor %}
+</div>
+
+{% endblock %}

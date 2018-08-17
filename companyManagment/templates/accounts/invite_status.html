@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block head %}
+<title>Invite</title>
+{% endblock %} {% block body %}
+<div class="container">
+    {% if invite is not defined %}
+    <p class="text-center">Didn't inivited anyone
+        <a href="{% url 'invite_employee' %}">invite someone Now</a>
+    </p>
+    {%endif%} {% for list in invited %}
+    <div class="card-body">
+        <h4 class="card-title">User: {{list.user}}</h4>
+        <p class="card-text"> Status {{list.status}}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

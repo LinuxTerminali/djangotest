@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block head %}
+<title>Invite</title>
+{% endblock %} {% block body %}
+<div class="container">
+
+    {% for list in invite %} {% if list.status == "pending" %}
+    <div class="card-body">
+        <h4 class="card-title">{{list.invitedby}}</h4>
+        <p class="card-text">{{list.text}}</p>
+        <a href="{% url 'recievied_invitations' %}?pk={{list.invitedby.id}}&result=accepted&invitation={{list.id}}" class="card-link">Accept</a>
+        <a href="{% url 'recievied_invitations' %}?pk={{list.invitedby.id}}&result=rejected&invitation={{list.id}}" class="card-link">Decline</a>
+    </div>
+    {%endif%} {% endfor %}
+</div>
+
+{% endblock %}
